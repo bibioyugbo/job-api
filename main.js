@@ -6,11 +6,15 @@ const jobsRouter = require('./jobs/job.router')
 
 dotenv.config()
 const port =process.env.PORT||3000
+app.use(express.json());
 
 database.connectDB();
 
 app.get('/',(req,res)=>{
     res.send('Jobs Apis')
+})
+app.get('/health', (req,res)=>{
+    res.send('OK')
 })
 
 app.listen(port, ()=>{

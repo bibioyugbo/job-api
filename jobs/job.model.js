@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const  jobSchema = new mongoose.Schema({
+const jobSchema = new mongoose.Schema({
     title: {
         type: String,
         required: true
@@ -23,19 +23,19 @@ const  jobSchema = new mongoose.Schema({
     },
     mode: {
         type: String,
-        enum: ['onsite','remote'],
+        enum: ['onsite','remote', "hybrid"],
         required: true
     },
-    experience: {
+    experienceLevel: {
         type: String,
         required: true
     },
-    status: {
-        type: String,
-        enum:['active', 'inactive', 'pending'],
-        default: 'pending',
-        required: true
-    },
+    // status: {
+    //     type: String,
+    //     enum:['active', 'inactive', 'pending'],
+    //     default: 'pending',
+    //     required: true
+    // },
     role: {
         type: String,
         required: true
@@ -48,13 +48,16 @@ const  jobSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    expiredDate: {
-        type: Date,
-        required: true
-    },
-    updateedAt: {
-        type: Date,
-        default: Date.now
-    }
+    // expiredDate: {
+    //     type: Date,
+    //     required: true
+    // },
+    // updateedAt: {
+    //     type: Date,
+    //     default: Date.now
+    // }
 
 });
+
+const Job = mongoose.model('Job', jobSchema);
+module.exports = Job;
